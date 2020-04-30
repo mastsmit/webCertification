@@ -1,13 +1,10 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
+import UserCardComp from './component/UserCardComp';
 import './App.css';
-import Button from './component/Button';
 function App(props) {
-  return(
+  return (
     <div>
-      <Button id={'button2'} ></Button>some
-      <Button id={'button1'} ></Button>some
-      <Button id={'button3'} ></Button>some
-      <Button id={'button4'} ></Button>some
+      <UserCardComp />
     </div>
   );
 }
