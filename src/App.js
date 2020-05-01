@@ -58,10 +58,13 @@ const data = [
 const credentials = ['Associate Cloud Engineer', 'Cloud Engineer', 'Google Cloud Platform', 'Cloud Architect'];
 function App() {
   const [computedData, setComputedData] = useState(data);
+  const [minValue, setMinValue] = useState(0);
+  const [maxValue, setMaxValue] = useState(4);
 
   const updateComputedData = (temp) => {
     setComputedData(temp)
   }
+
 
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap' }}>
@@ -70,10 +73,10 @@ function App() {
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', height: 'auto', flex: '1 0 1px', padding: '0px 16px 0px 8px' }}>
         <div>
-          <UserInfoCardHeader />
+          <UserInfoCardHeader userData={data} setMinValue={setMinValue} setMaxValue={setMaxValue} maxValue={maxValue} />
         </div>
         <div>
-          <UserInfoCard userData={computedData} credentials={credentials} />
+          <UserInfoCard userData={computedData} credentials={credentials} minValue={minValue} maxValue={maxValue} />
         </div>
       </div>
     </div>
