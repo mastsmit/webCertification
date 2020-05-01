@@ -111,15 +111,15 @@ function App() {
   const [minValue, setMinValue] = useState(0);
   const [maxValue, setMaxValue] = useState(defaultPageSize);
   const totalNumberOfUsers = data.length;
-  const updateComputedData = (temp) => {
-    setComputedData(temp)
-  }
+  // const updateComputedData = (temp) => {
+  //   setComputedData(temp)
+  // }
 
 
   return (
     <div className={s.appRoot} >
       <div className="search-and-filter-wrapper">
-        <SearchAndFilterUser credentials={credentials} updateUserData={updateComputedData} userData={data} />
+        <SearchAndFilterUser credentials={credentials} updateUserData={setComputedData} userData={data} computedData={computedData} />
       </div>
       <div className="header-and-user-info-wrapper" >
         <div>

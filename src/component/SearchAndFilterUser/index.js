@@ -6,10 +6,12 @@ const { SubMenu } = Menu;
 function SearchAndFilterUser({
     userData,
     credentials,
-    updateUserData
+    updateUserData,
+    computedData,
 }) {
     const [inputText, setInputText] = useState("");
     const [checkedBoxes, setCheckedBoxes] = useState([]);
+
     const searchUser = (searchText) => {
         const temp = userData.filter(user => user.name.includes(searchText))
         updateUserData(temp);
