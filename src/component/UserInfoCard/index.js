@@ -6,6 +6,7 @@ function UserInfoCard({
     minValue,
     maxValue
 }) {
+
     return (
         <div className={s.userCardCompRoot}>
             {
@@ -26,8 +27,8 @@ function UserInfoCard({
                                         {user.bio}
                                     </div>
                                     <div className="user-credentials-wrapper">
-                                        {user.credentials.map(credential => (
-                                            <div className="single-credential-tag">{credential}</div>
+                                        {user.credentials && Object.keys(user.credentials).map(key => (
+                                            <div className="single-credential-tag">{key}</div>
                                         ))}
                                     </div>
                                 </div>

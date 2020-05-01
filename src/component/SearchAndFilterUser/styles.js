@@ -6,11 +6,14 @@ export const searchAndFilterUserRoot = css`
     color:#1a73e8;
 }
 .search-by-name,.ant-checkbox-group{
-    margin: 0px 0px 4px 6px;
+    margin: 0px 0px 4px 8px;
     padding: 4px 4px 8px 4px;
     display:flex;
     background-color:white;
     flex-direction:column;
+}
+.search-bar-wrapper{
+    padding: 1vh 0px;
 }
 .ant-checkbox-group{
     margin-top:10px;

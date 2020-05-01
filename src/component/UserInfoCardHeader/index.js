@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Dropdown, Menu, Pagination } from 'antd';
+import { Dropdown, Menu, Pagination, Select } from 'antd';
 import * as s from './styles';
+const { Option } = Select;
 function UserInfoCardHeader({
     userData,
     setMinValue,
     setMaxValue,
-    maxValue
+    maxValue,
+    totalNumberOfUsers,
 }) {
     const [selectedMenuItem, setSelectedMenuItem] = useState('Newest First');
     const handleMenuClick = (key) => {
@@ -33,19 +35,27 @@ function UserInfoCardHeader({
         </Menu>
     )
 
-    const numberOfUsers = userData.length;
     return (
         <div className={s.userInfoCardHeaderRoot}>
             <div className="header-title-wrapper">
                 Credentials Holder Directory
             </div>
             <div className="header-total-filter-and-pagination-wrapper">
-                <div>
-                    Total {numberOfUsers} Members
+                <div className="header-total-wrapper">
+                    Total {totalNumberOfUsers} Members
                 </div>
                 <div className="header-filter-wrapper">
                     <div>order by:</div>
                     <div>
+                        {/* <Select defaultValue="newestFirst" dropdownClassName="dropDown-wrapper"
+                            dropdownStyle={{
+                                width: '21vw', backgroundColor: 'white', height: '22vh'
+                            }}>
+                            <Option value="newestFirst">NewestFirst</Option>
+                            <Option value="OldestFirst">Oldest First</Option>
+                            <Option value="new">A to Z</Option>
+                            <Option value="newest">Z to A</Option>
+                        </Select> */}
                         {/* <Dropdown overlay={menu}> */}
                         {/* <div> */}
                         {selectedMenuItem}
@@ -57,7 +67,7 @@ function UserInfoCardHeader({
                         defaultCurrent={1}
                         showTotal={(total, range) => `Viewing ${range} of ${total}`}
                         defaultPageSize={4}
-                        total={numberOfUsers}
+                        total={userData.length}
                         onChange={handlePagination}
                     />
                 </div>

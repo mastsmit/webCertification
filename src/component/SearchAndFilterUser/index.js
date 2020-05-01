@@ -6,7 +6,7 @@ const { SubMenu } = Menu;
 function SearchAndFilterUser({
     userData,
     credentials,
-    updateUserData,
+    updateUserData
 }) {
 
     const searchUser = (searchText) => {
@@ -19,14 +19,21 @@ function SearchAndFilterUser({
     }
 
     const handleChangeInCheckbox = (checkedValues) => {
-        const filteredUsers = userData.filter(user => {
+        let filteredUsers = userData;
+        let andOp = false;
+        filteredUsers = userData.filter(user => {
+            checkedValues.map((tag, index) => {
+                if (index === 0) {
+                    andOp = true;
+                }
+                andOp = andOp && user.credentials[tag];
+            });
             if (checkedValues.length === 0) {
-                return user;
+                return true;
             }
-            else {
-                return JSON.stringify(user.credentials).includes((JSON.stringify(checkedValues)));
-            }
-        })
+            return andOp;
+        });
+
         updateUserData(filteredUsers)
     }
 
@@ -35,8 +42,8 @@ function SearchAndFilterUser({
         <div className={s.searchAndFilterUserRoot}>
             <div className="search-by-name">
                 <div className="search-label">Name</div>
-                <div>
-                    <Input onChange={onChange} placeholder="Search by name" />
+                <div className="search-bar-wrapper">
+                    <Input onChange={onChange} placeholder="Search by name" style={{ minHeight: '28px', fontSize: '15px', width: '98%' }} />
                 </div>
             </div>
             <div className="search-by-credentials"></div>
