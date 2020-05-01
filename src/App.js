@@ -73,7 +73,7 @@ function App() {
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', height: 'auto', flex: '1 0 1px', padding: '0px 16px 0px 8px' }}>
         <div>
-          <UserInfoCardHeader userData={data} setMinValue={setMinValue} setMaxValue={setMaxValue} maxValue={maxValue} />
+          <UserInfoCardHeader userData={computedData} setMinValue={setMinValue} setMaxValue={setMaxValue} maxValue={maxValue} />
         </div>
         <div>
           <UserInfoCard userData={computedData} credentials={credentials} minValue={minValue} maxValue={maxValue} />
