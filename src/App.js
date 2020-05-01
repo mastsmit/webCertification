@@ -3,6 +3,7 @@ import UserInfoCard from './component/UserInfoCard';
 import UserInfoCardHeader from './component/UserInfoCardHeader';
 import SearchAndFilterUser from './component/SearchAndFilterUser';
 import moment from 'moment';
+import * as s from './styles';
 import './App.css';
 const data = [
   {
@@ -67,11 +68,11 @@ function App() {
 
 
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-      <div style={{ flex: '0 0 auto', minWidth: '1px', padding: '0px 16px 0px 0px' }}>
+    <div className={s.appRoot} >
+      <div className="search-and-filter-wrapper">
         <SearchAndFilterUser credentials={credentials} updateUserData={updateComputedData} userData={data} />
       </div>
-      <div style={{ display: 'flex', flexDirection: 'column', height: 'auto', flex: '1 0 1px', padding: '0px 16px 0px 8px' }}>
+      <div className="header-and-user-info-wrapper" >
         <div>
           <UserInfoCardHeader userData={computedData} setMinValue={setMinValue} setMaxValue={setMaxValue} maxValue={maxValue} />
         </div>

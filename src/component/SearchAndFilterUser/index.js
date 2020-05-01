@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Input, Checkbox } from 'antd';
+import { Input, Checkbox, Menu } from 'antd';
 import * as s from './styles';
 
-
+const { SubMenu } = Menu;
 function SearchAndFilterUser({
     userData,
     credentials,
@@ -34,13 +34,13 @@ function SearchAndFilterUser({
     return (
         <div className={s.searchAndFilterUserRoot}>
             <div className="search-by-name">
+                <div className="search-label">Name</div>
                 <div>
-                    <Input onChange={onChange} />
-                </div>
-                <div >
-                    <Checkbox.Group options={credentials} onChange={handleChangeInCheckbox} />
+                    <Input onChange={onChange} placeholder="Search by name" />
                 </div>
             </div>
+            <div className="search-by-credentials"></div>
+            <Checkbox.Group options={credentials} onChange={handleChangeInCheckbox} />
         </div>
     )
 }
