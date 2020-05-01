@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Input, Checkbox } from 'antd';
+import * as s from './styles';
 
 
 function SearchAndFilterUser({
@@ -31,12 +32,12 @@ function SearchAndFilterUser({
 
 
     return (
-        <div>
+        <div className={s.searchAndFilterUserRoot}>
             <div className="search-by-name">
                 <div>
                     <Input onChange={onChange} />
                 </div>
-                <div>
+                <div >
                     <Checkbox.Group options={credentials} onChange={handleChangeInCheckbox} />
                 </div>
             </div>
