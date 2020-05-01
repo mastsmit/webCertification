@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Input, Checkbox, Menu } from 'antd';
+import { Input, Checkbox, Menu, Button } from 'antd';
 import * as s from './styles';
 
 const { SubMenu } = Menu;
@@ -8,7 +8,8 @@ function SearchAndFilterUser({
     credentials,
     updateUserData
 }) {
-
+    const [inputText, setInputText] = useState("");
+    const [checkedBoxes, setCheckedBoxes] = useState([]);
     const searchUser = (searchText) => {
         const temp = userData.filter(user => user.name.includes(searchText))
         updateUserData(temp);
@@ -16,9 +17,17 @@ function SearchAndFilterUser({
 
     const onChange = (e) => {
         searchUser(e.target.value);
+        setInputText(e.target.value)
+    }
+
+    const handleClearFilters = () => {
+        setInputText("");
+        setCheckedBoxes([]);
+        updateUserData(userData);
     }
 
     const handleChangeInCheckbox = (checkedValues) => {
+        setCheckedBoxes(checkedValues);
         let filteredUsers = userData;
         let andOp = false;
         filteredUsers = userData.filter(user => {
@@ -40,14 +49,19 @@ function SearchAndFilterUser({
 
     return (
         <div className={s.searchAndFilterUserRoot}>
+            <div className='search-credential-text-and-clear-filter-wrapper'>
+                <div>Search credential holders:</div>
+                <div><Button onClick={handleClearFilters}>Clear Filters</Button></div>
+            </div>
             <div className="search-by-name">
                 <div className="search-label">Name</div>
                 <div className="search-bar-wrapper">
-                    <Input onChange={onChange} placeholder="Search by name" style={{ minHeight: '28px', fontSize: '15px', width: '98%' }} />
+                    <Input onChange={onChange} value={inputText} placeholder="Search by name" style={{ minHeight: '28px', fontSize: '15px', width: '98%' }} />
                 </div>
             </div>
-            <div className="search-by-credentials"></div>
-            <Checkbox.Group options={credentials} onChange={handleChangeInCheckbox} />
+            <div className="search-by-credentials"><div className="text-styles">Credentials</div>
+                <Checkbox.Group options={credentials} onChange={handleChangeInCheckbox} value={checkedBoxes} />
+            </div>
         </div>
     )
 }

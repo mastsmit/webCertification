@@ -8,21 +8,22 @@ function UserInfoCardHeader({
     setMaxValue,
     maxValue,
     totalNumberOfUsers,
+    defaultPageSize
 }) {
-    const [selectedMenuItem, setSelectedMenuItem] = useState('Newest First');
     const handleMenuClick = (key) => {
         console.log('key', key);
-        setSelectedMenuItem(key.item.props.children[1]);
     }
 
     const handlePagination = (page) => {
+        const offset = (page - 1) * defaultPageSize
+        console.log('page', page);
         if (page <= 1) {
             setMinValue(0);
-            setMaxValue(4);
+            setMaxValue(defaultPageSize);
         }
         else {
-            setMinValue(maxValue);
-            setMaxValue(page * 4);
+            setMinValue(offset);
+            setMaxValue(page * defaultPageSize);
         }
     }
 
@@ -45,7 +46,7 @@ function UserInfoCardHeader({
                     Total {totalNumberOfUsers} Members
                 </div>
                 <div className="header-filter-wrapper">
-                    <div>order by:</div>
+                    {/* <div>order by:</div> */}
                     <div>
                         {/* <Select defaultValue="newestFirst" dropdownClassName="dropDown-wrapper"
                             dropdownStyle={{
@@ -58,7 +59,7 @@ function UserInfoCardHeader({
                         </Select> */}
                         {/* <Dropdown overlay={menu}> */}
                         {/* <div> */}
-                        {selectedMenuItem}
+                        {/* {selectedMenuItem} */}
                     </div>
                     {/* </Dropdown></div> */}
                 </div>
@@ -66,7 +67,7 @@ function UserInfoCardHeader({
                     <Pagination
                         defaultCurrent={1}
                         showTotal={(total, range) => `Viewing ${range} of ${total}`}
-                        defaultPageSize={4}
+                        defaultPageSize={defaultPageSize}
                         total={userData.length}
                         onChange={handlePagination}
                     />

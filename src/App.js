@@ -54,13 +54,62 @@ const data = [
     credentials: { 'Associate Cloud Engineer': 1, 'Cloud Engineer': 1 },
     updatedAt: moment().format('LLLL'),
   },
+  {
+    userId: 7,
+    name: 'divyesh',
+    bio: 'hello',
+    imageUrl: 'https://avatars3.githubusercontent.com/u/29017855?s=460&u=59fd51dac68314a0859f083e0ce86ae8a815ebe6&v=4',
+    credentials: { 'Associate Cloud Engineer': 1, 'Cloud Engineer': 1 },
+    updatedAt: moment().format('LLLL'),
+  },
+  {
+    userId: 8,
+    name: 'divyesh',
+    bio: 'hello',
+    imageUrl: 'https://avatars3.githubusercontent.com/u/29017855?s=460&u=59fd51dac68314a0859f083e0ce86ae8a815ebe6&v=4',
+    credentials: { 'Associate Cloud Engineer': 1, 'Cloud Engineer': 1 },
+    updatedAt: moment().format('LLLL'),
+  },
+  {
+    userId: 9,
+    name: 'divyesh',
+    bio: 'hello',
+    imageUrl: 'https://avatars3.githubusercontent.com/u/29017855?s=460&u=59fd51dac68314a0859f083e0ce86ae8a815ebe6&v=4',
+    credentials: { 'Associate Cloud Engineer': 1, 'Cloud Engineer': 1 },
+    updatedAt: moment().format('LLLL'),
+  },
+  {
+    userId: 10,
+    name: 'divyesh',
+    bio: 'hello',
+    imageUrl: 'https://avatars3.githubusercontent.com/u/29017855?s=460&u=59fd51dac68314a0859f083e0ce86ae8a815ebe6&v=4',
+    credentials: { 'Associate Cloud Engineer': 1, 'Cloud Engineer': 1 },
+    updatedAt: moment().format('LLLL'),
+  },
+  {
+    userId: 11,
+    name: 'divyesh',
+    bio: 'hello',
+    imageUrl: 'https://avatars3.githubusercontent.com/u/29017855?s=460&u=59fd51dac68314a0859f083e0ce86ae8a815ebe6&v=4',
+    credentials: { 'Associate Cloud Engineer': 1, 'Cloud Engineer': 1 },
+    updatedAt: moment().format('LLLL'),
+  },
+  {
+    userId: 12,
+    name: 'divyesh',
+    bio: 'hello',
+    imageUrl: 'https://avatars3.githubusercontent.com/u/29017855?s=460&u=59fd51dac68314a0859f083e0ce86ae8a815ebe6&v=4',
+    credentials: { 'Associate Cloud Engineer': 1, 'Cloud Engineer': 1 },
+    updatedAt: moment().format('LLLL'),
+  },
 ]
 
 const credentials = ['Associate Cloud Engineer', 'Cloud Engineer', 'Google Cloud Platform', 'Cloud Architect', 'Professional Cloud Network Engineer', 'Professional Cloud Security Engineer'];
 function App() {
+  const defaultPageSize = 4;
   const [computedData, setComputedData] = useState(data);
   const [minValue, setMinValue] = useState(0);
-  const [maxValue, setMaxValue] = useState(4);
+  const [maxValue, setMaxValue] = useState(defaultPageSize);
   const totalNumberOfUsers = data.length;
   const updateComputedData = (temp) => {
     setComputedData(temp)
@@ -74,7 +123,13 @@ function App() {
       </div>
       <div className="header-and-user-info-wrapper" >
         <div>
-          <UserInfoCardHeader userData={computedData} setMinValue={setMinValue} setMaxValue={setMaxValue} maxValue={maxValue} totalNumberOfUsers={totalNumberOfUsers} />
+          <UserInfoCardHeader
+            userData={computedData}
+            setMinValue={setMinValue}
+            setMaxValue={setMaxValue}
+            maxValue={maxValue}
+            totalNumberOfUsers={totalNumberOfUsers}
+            defaultPageSize={defaultPageSize} />
         </div>
         <div>
           <UserInfoCard userData={computedData} credentials={credentials} minValue={minValue} maxValue={maxValue} />

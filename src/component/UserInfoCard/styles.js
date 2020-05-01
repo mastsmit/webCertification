@@ -4,13 +4,14 @@ export const userCardCompRoot = css`
 .single-user-card{
     background-color: #fff;
     display:flex;
-    margin:5px 0px 10px 0px;
+    margin:5px 0px 15px 0px;
     padding:5vh 6vw 5vh 4vw;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16);
     cursor:pointer;
 flex-direction:column;
 flex-wrap: wrap;
-.user-profile-wrapper{
+.user-profile-wrapper
+{
     display:flex;
     transition: all ease-in-out 200ms;
 }
@@ -53,5 +54,15 @@ flex-wrap: wrap;
     background-color:rgba(50,50,255,0.01);
     transform: translate3d(0,-1px,0);
 }
+}
+.user-not-found-card{
+    background-color: #fff;
+    display:flex;
+    margin:5px 0px 10px 0px;
+    padding:5vh 6vw 5vh 4vw;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16);
+    .user-not-found-text-wrapper{
+        margin-left: 10px;
+    }
 }
 `;

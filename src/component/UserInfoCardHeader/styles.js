@@ -12,9 +12,13 @@ padding: 2vh 0px 2vh 0px;
 }
 .header-total-wrapper{
     padding: 5px 0px 5px 0px;
+    font-size: large;
 }
 .header-filter-wrapper{
     display:flex;
+}
+.header-title-wrapper{
+    font-size: x-large;
 }
 .ant-pagination{
     display:flex;
